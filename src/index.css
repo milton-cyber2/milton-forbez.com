@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Luxury dark theme — values in OKLCH channels */
+  --background-50: 0.14 0.005 240;
+  --background-100: 0.18 0.006 240;
+  --background-200: 0.22 0.007 240;
+  --background-300: 0.28 0.008 240;
+  --background-400: 0.34 0.009 240;
+  --background-500: 0.42 0.01 240;
+  --background-600: 0.52 0.012 240;
+  --background-700: 0.62 0.014 240;
+  --background-800: 0.72 0.014 240;
+  --background-900: 0.82 0.014 240;
+  --background-950: 0.92 0.012 240;
+
+  --foreground-50: 0.20 0.005 240;
+  --foreground-100: 0.32 0.006 240;
+  --foreground-200: 0.42 0.008 240;
+  --foreground-300: 0.55 0.008 240;
+  --foreground-400: 0.65 0.008 240;
+  --foreground-500: 0.72 0.006 240;
+  --foreground-600: 0.78 0.006 240;
+  --foreground-700: 0.84 0.005 240;
+  --foreground-800: 0.90 0.004 240;
+  --foreground-900: 0.95 0.003 240;
+  --foreground-950: 0.99 0 0;
+
+  --primary-50: 0.96 0.02 235;
+  --primary-100: 0.90 0.05 235;
+  --primary-200: 0.82 0.09 235;
+  --primary-300: 0.74 0.13 235;
+  --primary-400: 0.68 0.16 235;
+  --primary-500: 0.72 0.19 232;
+  --primary-600: 0.62 0.20 232;
+  --primary-700: 0.52 0.19 232;
+  --primary-800: 0.42 0.16 232;
+  --primary-900: 0.32 0.12 232;
+  --primary-950: 0.22 0.08 232;
+
+  --accent-50: 0.96 0.02 25;
+  --accent-100: 0.90 0.05 25;
+  --accent-200: 0.82 0.10 25;
+  --accent-300: 0.74 0.14 25;
+  --accent-400: 0.68 0.17 25;
+  --accent-500: 0.63 0.20 25;
+  --accent-600: 0.56 0.20 25;
+  --accent-700: 0.46 0.17 25;
+  --accent-800: 0.38 0.14 25;
+  --accent-900: 0.28 0.10 25;
+  --accent-950: 0.18 0.06 25;
+
+  --secondary-50: 0.95 0.005 240;
+  --secondary-100: 0.88 0.008 240;
+  --secondary-200: 0.78 0.010 240;
+  --secondary-300: 0.68 0.012 240;
+  --secondary-400: 0.58 0.014 240;
+  --secondary-500: 0.50 0.015 240;
+  --secondary-600: 0.42 0.014 240;
+  --secondary-700: 0.34 0.012 240;
+  --secondary-800: 0.26 0.010 240;
+  --secondary-900: 0.20 0.008 240;
+  --secondary-950: 0.14 0.006 240;
+
+  --font-heading: 'Oswald', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-label: 'Inter', system-ui, sans-serif;
+}
+
+html,
+body {
+  background: oklch(var(--background-50));
+  color: oklch(var(--foreground-950));
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Selection */
+::selection {
+  background: oklch(var(--primary-500) / 0.35);
+  color: oklch(var(--foreground-950));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--background-50));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--background-300));
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--primary-500));
+}
+
+/* Utility helpers */
+.container-x {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media (min-width: 1280px) {
+  .container-x {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.glass {
+  background: oklch(var(--background-100) / 0.55);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid oklch(var(--foreground-950) / 0.08);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Anti-spam honeypot: keep visually hidden in a way AutoFill cannot target */
+.field-alt {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Luxury form input */
+.input-lux {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 0.5rem;
+  background: oklch(var(--background-50));
+  border: 1px solid oklch(var(--background-300) / 0.6);
+  color: oklch(var(--foreground-950));
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-lux::placeholder {
+  color: oklch(var(--foreground-500));
+}
+.input-lux:focus {
+  border-color: oklch(var(--primary-500));
+  box-shadow: 0 0 0 1px oklch(var(--primary-500));
+}
+select.input-lux {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8b0bc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+
+/* ===== Cinematic animations for brand showcase ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulseSoft {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes sweepShine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  60%,
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.18);
+  }
+}
+
+@keyframes spinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scrollHint {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-fade-in {
+  animation: fadeIn 1s ease both;
+}
+
+.anim-float {
+  animation: floatY 5s ease-in-out infinite;
+}
+
+.anim-kenburns {
+  animation: kenburns 16s ease-in-out infinite alternate;
+}
+
+.anim-shine {
+  position: relative;
+  overflow: hidden;
+}
+.anim-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(var(--foreground-950) / 0.12),
+    transparent
+  );
+  animation: sweepShine 4.5s ease-in-out infinite;
+}
+
+.anim-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    oklch(var(--foreground-950)) 0%,
+    oklch(var(--primary-500)) 25%,
+    oklch(var(--foreground-950)) 50%,
+    oklch(var(--primary-500)) 75%,
+    oklch(var(--foreground-950)) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textShimmer 6s linear infinite;
+}
+
+.text-shadow-lg {
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== World-class brand film effects ===== */
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ringDash {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cornerGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(1200%);
+    opacity: 0;
+  }
+}
+
+.anim-spin-aura {
+  animation: ringDash 16s linear infinite;
+}
+
+.anim-glow-pulse {
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.anim-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.anim-corner {
+  animation: cornerGlow 3.5s ease-in-out infinite;
+}
+
+.anim-scan {
+  animation: scanLine 5s ease-in-out infinite;
+}
+
+/* Conic aura that rotates around each film frame */
+.aura-conic {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    oklch(var(--primary-500) / 0.55) 60deg,
+    transparent 140deg,
+    oklch(var(--accent-500) / 0.5) 240deg,
+    transparent 320deg
+  );
+}
+
+.aura-conic-accent {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    oklch(var(--accent-500) / 0.6) 70deg,
+    transparent 150deg,
+    oklch(var(--accent-400) / 0.45) 250deg,
+    transparent 330deg
+  );
+}
+
+.aura-conic-primary {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    oklch(var(--primary-500) / 0.6) 70deg,
+    transparent 150deg,
+    oklch(var(--primary-400) / 0.45) 250deg,
+    transparent 330deg
+  );
+}
+
+/* Fine film grain overlay */
+.film-grain {
+  background-image: repeating-radial-gradient(
+    circle at 17% 32%,
+    oklch(var(--foreground-950) / 0.05) 0,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+}
